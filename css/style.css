@@ -1,0 +1,2459 @@
+/* --- Variáveis Globais e Reset Básico --- */
+:root {
+    /* COR ATUALIZADA */
+    --primary-blue: #0D218A; 
+    --accent-blue: #3E63DD;
+    --white: #FFFFFF;
+    --text-gray: #D1D5DB;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --green-accent: #4ADE80;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    overflow-x: hidden;
+    position: relative;
+}
+
+.background-dots,.background-image,.mouse-glow,.container,.main-header,.main-nav,.logo svg,.nav-links,.nav-links a,.nav-links a:hover,.nav-buttons,.btn,.btn-outline,.btn-outline:hover,.btn-solid,.btn-solid:hover,.hero-text,.hero-text h1,.hero-text p,.price-section,.price-label,.price-period,.price-value,.btn-gradient,.btn-gradient:hover,.services-grid,.service-card,.service-card:hover,.icon-bg,.icon-bg svg,.service-card span {  
+}
+
+.container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+/* --- Cabeçalho e Navegação --- */
+.main-header { padding-top: 2rem; }
+.main-nav { display: flex; justify-content: space-between; align-items: center; }
+.logo svg { display: block; }
+.nav-links { list-style: none; display: flex; gap: 2rem; }
+.nav-links a { color: var(--text-gray); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
+.nav-links a:hover { color: var(--white); }
+.nav-buttons { display: flex; gap: 1rem; }
+/* --- Botões --- */
+.btn { padding: 0.6rem 1.5rem; border-radius: 12px; border: 1px solid transparent; font-weight: 500; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; }
+.btn-outline { background-color: transparent; color: var(--white); border-color: var(--white); }
+.btn-outline:hover { background-color: var(--white); color: var(--primary-blue); }
+.btn-solid { background-color: var(--white); color: var(--primary-blue); }
+.btn-solid:hover { background-color: var(--text-gray); }
+/* --- Conteúdo Principal (Hero) --- */
+.main-content { display: flex; align-items: center; min-height: calc(100vh - 120px); padding-bottom: 100px; }
+.content-wrapper { display: flex; justify-content: space-between; align-items: center; gap: 4rem; width: 100%; }
+.hero-text { flex: 1; max-width: 500px; }
+.hero-text h1 { font-size: 3rem; line-height: 1.2; font-weight: 700; margin-bottom: 1rem; }
+.hero-text p { font-size: 1.1rem; color: var(--text-gray); max-width: 450px; margin-bottom: 2rem; }
+.price-section { margin-bottom: 2rem; }
+.price-label, .price-period { display: block; font-size: 1rem; color: var(--text-gray); }
+.price-value { display: block; font-size: 3.5rem; font-weight: 700; margin: 0.25rem 0; }
+.btn-gradient { background-image: linear-gradient(to right, #6D28D9, #4F46E5); color: var(--white); border: none; font-size: 1rem; padding: 0.8rem 2.5rem; border-radius: 12px; }
+.btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+.services-grid { flex: 1; max-width: 550px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.service-card { background-color: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; transition: background-color 0.3s ease, transform 0.3s ease; }
+.service-card:hover { background-color: rgba(255, 255, 255, 0.1); transform: translateY(-5px); }
+.icon-bg { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+.icon-bg svg { color: var(--text-gray); width: 24px; height: 24px; }
+.service-card span { font-weight: 500; }
+
+/* ===================================== */
+/* ========= ESTILOS CARROSSEL ========= */
+/* ===================================== */
+
+.benefits-carousel-section {
+    background-color: #fff;
+    padding: 4rem 0;
+    margin-top: -50px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    position: relative;
+    z-index: 10;
+}
+
+.carousel-wrapper { position: relative; }
+.carousel-track-container { overflow: hidden; border-radius: 20px; }
+.carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+.carousel-slide { flex: 0 0 100%; display: flex; align-items: center; gap: 3rem; padding: 1rem 2rem; /* Padding vertical diminuído */ }
+.slide-content { flex: 1; color: var(--primary-blue); max-width: 50%; }
+.service-tag { display: inline-flex; align-items: center; gap: 0.5rem; background-color: #f3f4f6; color: #6b7280; padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 500; margin-bottom: 1.5rem; }
+.service-tag svg { width: 16px; height: 16px; }
+.slide-content h2 { font-size: 2rem; font-weight: 700; line-height: 1.3; margin-bottom: 1rem; }
+.slide-content p { color: #4b5563; font-size: 1rem; margin-bottom: 2rem; }
+.slide-image-wrapper { flex: 1; display: flex; justify-content: center; align-items: center; }
+
+.slide-image-wrapper img {
+    max-width: 400px;
+    height: 400px;
+    object-fit: cover;
+    clip-path: circle(50% at 50% 50%);
+}
+
+.carousel-nav { display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem; }
+.carousel-arrow { background: none; border: none; cursor: pointer; color: var(--accent-blue); padding: 0.5rem; }
+.carousel-arrow:hover { color: var(--primary-blue); }
+.carousel-dots { display: flex; gap: 0.5rem; }
+.carousel-dot { width: 10px; height: 10px; border-radius: 50%; border: none; background-color: #d1d5db; cursor: pointer; padding: 0; transition: background-color 0.3s ease, transform 0.3s ease; }
+.carousel-dot.active { background-color: var(--accent-blue); transform: scale(1.3); }
+
+/* ==================================== */
+/* ========= ESTILOS PARCEIROS ======== */
+/* ==================================== */
+
+@media (max-width: 1024px) {
+    .content-wrapper { flex-direction: column; text-align: center; gap: 2rem; }
+    .main-content { height: auto; padding: 4rem 0; }
+    .hero-text { max-width: 100%; display: flex; flex-direction: column; align-items: center; }
+    .services-grid { max-width: 600px; width: 100%; }
+}
+
+@media (max-width: 900px) {
+    .carousel-slide { flex-direction: column; text-align: center; gap: 2rem; }
+    .slide-content { max-width: 100%; order: 2; display: flex; flex-direction: column; align-items: center; }
+    .slide-image-wrapper { order: 1; }
+    .slide-image-wrapper img { width: 300px; height: 300px; }
+    .carousel-nav { justify-content: center; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero-text h1 { font-size: 2.5rem; }
+    .price-value { font-size: 3rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .partners-title { font-size: 1.5rem; }
+    .logo-scroller .logo-list { animation-duration: 20s; }
+}
+
+/* ======================================= */
+/* ========= ESTILOS PERFORMANCE ========= */
+/* ======================================= */
+
+.performance-section {
+    background-color: #fff;
+    padding: 4rem 0 6rem 0;
+}
+
+.performance-card {
+    background-color: #0d218a;
+    border-radius: 24px;
+    padding: 4rem;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    min-height: 480px;
+}
+
+.performance-content {
+    flex: 0 0 58%;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+}
+
+.performance-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.pill {
+    background-color: #e5e7eb;
+    color: #4b5563;
+    padding: 0.4rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.partner-logo {
+    height: 30px;
+    filter: brightness(0) invert(1);
+}
+
+.performance-content h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    max-width: 90%;
+}
+
+.performance-content .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.feature-item {
+    background-color: #fff;
+    color: #374151;
+    border-radius: 12px;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.checkmark {
+    color: #6d28d9;
+    width: 24px;
+    height: 24px;
+    margin-bottom: 0.75rem;
+}
+
+.exclusive-discount {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.performance-image-wrapper {
+    position: absolute;
+    top: 0;
+    right: -5%;
+    bottom: 0;
+    width: 50%;
+    z-index: 1;
+}
+
+.performance-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    clip-path: circle(65% at 40% 50%);
+}
+
+@media (max-width: 1024px) {
+    .performance-card {
+        flex-direction: column;
+        padding: 2rem;
+        min-height: auto;
+    }
+    .performance-content {
+        flex: 1;
+        max-width: 100%;
+        text-align: center;
+    }
+    .performance-header {
+        justify-content: center;
+    }
+    .performance-content h2 {
+        max-width: 100%;
+        font-size: 1.75rem;
+    }
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+    .performance-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 350px;
+        right: 0;
+        order: -1;
+        margin-bottom: 2rem;
+    }
+    .performance-image-wrapper img {
+        clip-path: circle(50% at 50% 50%);
+    }
+}
+
+/* ===================================== */
+/* ========= ESTILOS STATS/CTA ========= */
+/* ===================================== */
+
+.stats-cta-section {
+    background-color: #f8f9fa;
+    padding: 8rem 0;
+}
+
+.stats-wrapper {
+    position: relative;
+    height: 380px; 
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem;
+    width: 55%;
+    min-width: 450px;
+    text-align: left;
+    color: var(--primary-blue);
+    line-height: 1.6;
+    position: absolute;
+}
+
+.stat-card p {
+    font-size: 1.1rem;
+}
+
+.stat-card strong {
+    font-weight: 700;
+}
+
+.stats-wrapper .stat-card:first-child {
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.cta-card {
+    top: 110px;
+    right: 0;
+    z-index: 2;
+    text-align: center;
+}
+
+.cta-card .btn {
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 950px) {
+    .stats-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        height: auto;
+        position: static;
+    }
+    .stat-card {
+        position: static;
+        width: 90%;
+        min-width: unset;
+        max-width: 500px;
+        text-align: center;
+    }
+    .cta-card {
+        margin-top: -3rem;
+        padding-top: 4rem;
+    }
+}
+/* ======================================= */
+/* ========= ESTILOS MEIO AMBIENTE ========= */
+/* ======================================= */
+
+.environment-section {
+    background-color: #f8f9fa;
+    padding: 6rem 0;
+}
+
+.environment-card {
+    background-color: #0d218a;
+    border-radius: 24px;
+    padding: 4rem;
+    color: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "info video"
+        "button button";
+    gap: 2rem 4rem;
+    align-items: center;
+}
+
+.environment-info {
+    grid-area: info;
+}
+
+.environment-video-side {
+    grid-area: video;
+}
+
+.environment-card .btn {
+    grid-area: button;
+    justify-self: center;
+    margin-top: 2rem;
+}
+
+.environment-info h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 3rem;
+}
+
+.environment-stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.stat-item {
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.stat-item:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 80%;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    opacity: 0.8;
+}
+
+.environment-video-side p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.video-thumbnail {
+    display: block;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.play-button-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.video-thumbnail:hover .play-button-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.play-button-overlay svg {
+    margin-left: 4px;
+}
+
+@media (max-width: 950px) {
+    .environment-card {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "info"
+            "video"
+            "button";
+        padding: 2.5rem;
+        text-align: center;
+    }
+    .environment-info h2 {
+        font-size: 1.75rem;
+    }
+    .environment-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .stat-item {
+        padding-left: 1rem;
+    }
+}
+
+/* ========================================= */
+/* ========= ESTILOS DEPOIMENTOS =========== */
+/* ========================================= */
+
+.testimonials-section {
+    background-color: #f8f9fa;
+    padding: 6rem 0;
+}
+
+.testimonials-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.testimonial-intro {
+    flex: 0 0 35%;
+    color: var(--primary-blue);
+}
+
+.testimonial-intro .pill {
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-intro h2 {
+    font-size: 2.25rem;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.testimonial-intro h2 strong {
+    font-weight: 700;
+}
+
+.testimonial-carousel {
+    flex: 1;
+}
+
+.testimonial-slide {
+    flex: 0 0 100%;
+    padding: 0.5rem;
+}
+
+.testimonial-card {
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 2.5rem;
+}
+
+.quote-icon {
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-quote {
+    color: var(--accent-blue);
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.testimonial-quote strong {
+    font-weight: 700;
+}
+
+.testimonial-body {
+    color: #4b5563;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.testimonial-author {
+    color: var(--primary-blue);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.testimonial-author strong {
+    display: block;
+    font-weight: 700;
+}
+
+.testimonial-author span {
+    opacity: 0.8;
+}
+
+.testimonial-nav {
+    justify-content: flex-end; /* Alinha as setas à direita */
+    margin-top: 1rem;
+}
+
+/* --- Responsividade para Depoimentos --- */
+@media (max-width: 950px) {
+    .testimonials-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+}
+
+/* ======================================= */
+/* ========= ESTILOS DO RODAPÉ =========== */
+/* ======================================= */
+
+.main-footer-wrapper {
+    background-color: #0b157a;
+    color: #fff;
+    clip-path: polygon(0% 10%, 100% 0%, 100% 100%, 0% 100%);
+    margin-top: -100px;
+    padding-top: 150px;
+    position: relative;
+    z-index: 5;
+}
+
+.footer-cta-section {
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-cta-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cta-text h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.cta-text p {
+    opacity: 0.8;
+}
+
+/* Rodapé Principal */
+.footer-main {
+    padding: 4rem 0 2rem 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-column .logo {
+    margin-bottom: 1rem;
+}
+
+.footer-description {
+    max-width: 350px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+.footer-column h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.contact-list svg {
+    color: var(--accent-blue);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.footer-bottom a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 950px) {
+    .main-footer-wrapper {
+        clip-path: polygon(0% 5%, 100% 0%, 100% 100%, 0% 100%);
+        margin-top: -50px;
+        padding-top: 80px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-list {
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-cta-content, .footer-bottom {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}
+
+/* ======================================= */
+/* ========= ESTILOS PÁGINA Z.BANK ========= */
+/* ======================================= */
+
+.zbank-page-container {
+    background-color: #fff;
+}
+
+.zbank-hero-section {
+    background-color: #0d218a;
+    color: #fff;
+    padding-bottom: 10rem;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+
+.zbank-hero-section .main-header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.zbank-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.zbank-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.service-tag.dark-bg {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 9999px;
+    display: inline-flex;
+    padding: 0.6rem 1.2rem;
+    gap: 0.5rem;
+    align-items: center;
+    font-weight: 500;
+}
+
+.zbank-content h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.zbank-content .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2.5rem;
+    max-width: 450px;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-light-blue {
+    background-color: #3b82f6;
+    color: #fff;
+    border-radius: 12px;
+}
+
+.btn-light-blue:hover {
+    background-color: #2563eb;
+}
+
+.activation-note {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    max-width: 250px;
+    line-height: 1.5;
+}
+
+.zbank-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.zbank-image-wrapper img {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@media (max-width: 950px) {
+    .zbank-hero-section {
+        padding-bottom: 6rem;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+    }
+
+    .zbank-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .zbank-content {
+        max-width: 100%;
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .zbank-image-wrapper {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+
+    .zbank-image-wrapper img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .zbank-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .button-group {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* ============================================= */
+/* ========= ESTILOS BENEFÍCIOS Z.BANK ========= */
+/* ============================================= */
+
+.zbank-benefits-section {
+    padding: 6rem 0;
+    background-color: #fff;
+}
+
+.zbank-benefits-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.zbank-benefits-content {
+    flex: 1;
+    max-width: 50%;
+    color: var(--primary-blue);
+}
+
+.zbank-benefits-content h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 3rem;
+}
+
+.benefit-tag {
+    background-color: #0d218a;
+    color: #fff;
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.benefit-item {
+    background-color: #3b82f6;
+    color: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+}
+
+.zbank-benefits-image-area {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-background-blob {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom right, #818CF8, #4ADE80);
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.app-image {
+    position: relative;
+    z-index: 2;
+    max-width: 80%;
+}
+
+@media (max-width: 950px) {
+    .zbank-benefits-wrapper {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .zbank-benefits-content {
+        max-width: 100%;
+    }
+    .zbank-benefits-content h2 {
+        font-size: 1.75rem;
+    }
+    .app-image {
+        max-width: 60%;
+    }
+}
+
+@media (max-width: 640px) {
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ======================================= */
+/* ========= ESTILOS SEÇÃO CARTÃO ======== */
+/* ======================================= */
+
+.zbank-card-section {
+    padding: 6rem 0;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.zbank-card-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-bottom: 6rem;
+}
+
+.card-image-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-image-area img {
+    width: 100%;
+    max-width: 450px;
+    height: 500px;
+    object-fit: cover;
+    clip-path: path('M 225,500 C 380,500 450,388.07 450,250 C 450,111.93 380,0 225,0 C 70,0 0,111.93 0,250 C 0,388.07 70,500 225,500 Z');
+}
+
+.card-benefits-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.app-download-section p {
+    color: var(--primary-blue);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.app-stores {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.app-stores a img {
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.app-stores a:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 950px) {
+    .zbank-card-wrapper {
+        flex-direction: column;
+    }
+    .card-benefits-content {
+        max-width: 100%;
+    }
+    .card-image-area img {
+        width: 400px;
+        height: 400px;
+        clip-path: circle(50% at 50% 50%);
+    }
+}
+
+/* ======================================= */
+/* ========= ESTILOS CTA FINAL =========== */
+/* ======================================= */
+
+.final-cta-section {
+    background-color: #f8f9fa;
+    padding: 6rem 0;
+}
+
+.final-cta-card {
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.final-cta-content {
+    color: var(--primary-blue);
+}
+
+.final-cta-content h3 {
+    font-size: 1.75rem;
+    line-height: 1.4;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+}
+
+.final-cta-content h3 strong {
+    font-weight: 700;
+    color: #a78bfa;
+}
+
+.final-cta-content p {
+    color: #4b5563;
+    margin-bottom: 2rem;
+}
+
+.price-bubble {
+    background-color: #0d218a;
+    color: #fff;
+    border-radius: 999px;
+    padding: 1.5rem 2.5rem;
+    text-align: center;
+    position: relative;
+    clip-path: polygon(0% 50%, 20% 0%, 100% 0%, 100% 100%, 20% 100%);
+}
+
+.price-bubble .price-label,
+.price-bubble .price-period {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.price-bubble .price-value {
+    font-size: 2.5rem;
+    line-height: 1;
+    margin: 0.5rem 0;
+    font-weight: 300;
+}
+
+.price-bubble .price-value strong {
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+@media (max-width: 950px) {
+    .final-cta-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    .price-bubble {
+        clip-path: none;
+    }
+}
+
+/* ======================================== */
+/* ========= ESTILOS PÁGINA Z.FARMA ========= */
+/* ======================================== */
+
+.zfarma-hero-section {
+    background-color: #0d218a;
+    color: #fff;
+    padding-bottom: 10rem;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+
+.zfarma-hero-section .main-header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.zfarma-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.zfarma-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.zfarma-content h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.zfarma-content .btn {
+    margin-bottom: 1.5rem;
+}
+
+.zfarma-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.zfarma-image-wrapper img {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.zfarma-benefits-section {
+    padding: 6rem 0;
+    background-color: #fff;
+    color: var(--primary-blue);
+    text-align: center;
+}
+
+.zfarma-benefits-section h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+.benefits-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.benefit-tag-red {
+    display: inline-block;
+    background-color: #ef4444;
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.zfarma-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.benefit-item-gray {
+    background-color: #f3f4f6;
+    color: var(--primary-blue);
+    padding: 2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+}
+
+.benefit-item-gray strong {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 950px) {
+    .zfarma-hero-section {
+        padding-bottom: 6rem;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+    }
+
+    .zfarma-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .zfarma-content {
+        max-width: 100%;
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .zfarma-image-wrapper {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+
+    .zfarma-image-wrapper img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .zfarma-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .zfarma-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zfarma-benefits-section h2 {
+        font-size: 1.75rem;
+    }
+}
+
+.final-cta-content h3 strong.red-text {
+    color: #ef4444; /* Vermelho */
+}
+
+/* ======================================= */
+/* ========= ESTILOS PÁGINA Z.VIDA ========= */
+/* ======================================= */
+
+.zvida-hero-section {
+    background-color: #0d218a;
+    color: #fff;
+    padding-bottom: 10rem;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+
+.zvida-hero-section .main-header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.zvida-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.zvida-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.zvida-content h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.zvida-content .btn {
+    margin-bottom: 1.5rem;
+}
+
+.zvida-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.zvida-image-wrapper img {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@media (max-width: 950px) {
+    .zvida-hero-section {
+        padding-bottom: 6rem;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+    }
+
+    .zvida-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .zvida-content {
+        max-width: 100%;
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .zvida-image-wrapper {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+
+    .zvida-image-wrapper img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .zvida-content h2 {
+        font-size: 2.5rem;
+    }
+}
+
+/* ============================================ */
+/* ========= ESTILOS BENEFÍCIOS Z.VIDA ======== */
+/* ============================================ */
+
+.zvida-benefits-section {
+    padding: 6rem 0;
+    background-color: #f8f9fa;
+    color: var(--primary-blue);
+    text-align: center;
+}
+
+.benefit-tag-cyan {
+    display: inline-block;
+    background-color: #22d3ee;
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.zvida-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.final-cta-content h3 strong.cyan-text {
+    color: #22d3ee;
+}
+
+@media (max-width: 950px) {
+    .zvida-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* =============================================== */
+/* ========= ESTILOS PÁGINA Z.RESIDÊNCIA ========= */
+/* =============================================== */
+
+.zresidencia-hero-section {
+    background-color: #0d218a;
+    color: #fff;
+    padding-bottom: 10rem;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+
+.zresidencia-hero-section .main-header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.zresidencia-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.zresidencia-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.zresidencia-content h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.zresidencia-content .btn {
+    margin-bottom: 1.5rem;
+}
+
+.zresidencia-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.zresidencia-image-wrapper img {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@media (max-width: 950px) {
+    .zresidencia-hero-section {
+        padding-bottom: 6rem;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+    }
+
+    .zresidencia-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .zresidencia-content {
+        max-width: 100%;
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .zresidencia-image-wrapper {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+
+    .zresidencia-image-wrapper img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .zresidencia-content h2 {
+        font-size: 2.5rem;
+    }
+}
+/* ================================================= */
+/* ========= ESTILOS BENEFÍCIOS Z.RESIDÊNCIA ========= */
+/* ================================================= */
+
+.zresidencia-benefits-section {
+    padding: 6rem 0;
+    background-color: #f8f9fa;
+    color: var(--primary-blue);
+    text-align: center;
+}
+
+.zresidencia-benefits-section h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+.benefit-tag-purple {
+    display: inline-block;
+    background-color: #a855f7;
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.zresidencia-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (max-width: 950px) {
+    .zresidencia-benefits-section h2 {
+        font-size: 1.75rem;
+    }
+    .zresidencia-benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .zresidencia-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.final-cta-content h3 strong.purple-text {
+    color: #a855f7; /* Roxo/Violeta */
+}
+
+/* ============================================== */
+/* ========= ESTILOS PÁGINA Z.PROTEÇÃO ========= */
+/* ============================================== */
+
+.zprotecao-hero-section {
+    background-color: #0d218a;
+    color: #fff;
+    padding-bottom: 10rem;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+
+.zprotecao-hero-section .main-header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.zprotecao-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.zprotecao-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.zprotecao-content h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.zprotecao-content .btn {
+    margin-bottom: 1.5rem;
+}
+
+.zprotecao-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.zprotecao-image-wrapper img {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@media (max-width: 950px) {
+    .zprotecao-hero-section {
+        padding-bottom: 6rem;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+    }
+
+    .zprotecao-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .zprotecao-content {
+        max-width: 100%;
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .zprotecao-image-wrapper {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+
+    .zprotecao-image-wrapper img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .zprotecao-content h2 {
+        font-size: 2.5rem;
+    }
+}
+
+/* ================================================= */
+/* ========= ESTILOS BENEFÍCIOS Z.PROTEÇÃO ========= */
+/* ================================================= */
+
+.zprotecao-benefits-section {
+    padding: 6rem 0;
+    background-color: #f8f9fa;
+    color: var(--primary-blue);
+    text-align: center;
+}
+
+.benefit-tag-blue {
+    display: inline-block;
+    background-color: #3b82f6;
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.zprotecao-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.final-cta-content h3 strong.blue-text {
+    color: #3b82f6;
+}
+
+@media (max-width: 950px) {
+    .zprotecao-benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .zprotecao-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =============================================== */
+/* ========= ESTILOS PÁGINA Z.PARCEIROS ========= */
+/* =============================================== */
+
+.zparceiros-hero-section {
+    background-color: #0d218a;
+    color: #fff;
+    padding-bottom: 10rem;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+
+.zparceiros-hero-section .main-header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.zparceiros-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.zparceiros-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.zparceiros-content h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.zparceiros-content .btn {
+    margin-bottom: 1.5rem;
+}
+
+.zparceiros-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.zparceiros-image-wrapper img {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@media (max-width: 950px) {
+    .zparceiros-hero-section {
+        padding-bottom: 6rem;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+    }
+
+    .zparceiros-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .zparceiros-content {
+        max-width: 100%;
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .zparceiros-image-wrapper {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+
+    .zparceiros-image-wrapper img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .zparceiros-content h2 {
+        font-size: 2.5rem;
+    }
+}
+
+/* =============================================== */
+/* ========= ESTILOS PARCEIROS (SCROLLER) ========= */
+/* =============================================== */
+
+.partners-section {
+    background-color: #fff;
+    padding: 4rem 0 6rem 0;
+    border-top: 1px solid #e5e7eb;
+}
+
+.partners-title {
+    text-align: center;
+    color: var(--primary-blue);
+    font-size: 1.75rem;
+    line-height: 1.4;
+    margin-bottom: 4rem;
+}
+
+.partners-title strong { font-weight: 700; }
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+.logo-scroller {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.logo-scroller .logo-list {
+    display: flex;
+    gap: 4rem;
+    flex-shrink: 0;
+    animation: scroll 30s linear infinite;
+}
+
+.logo-scroller .logo-list img {
+    height: 40px;
+    max-width: 150px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.logo-scroller .logo-list img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+@media (max-width: 950px) {
+    .partner-logos-section h2 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .partner-logos-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em celulares */
+        gap: 2rem;
+    }
+}
+
+/* ======================================= */
+/* ========= ESTILOS SEÇÃO SEGUROS ========= */
+/* ======================================= */
+
+.insurance-section {
+    padding: 6rem 0;
+    background-color: #f8f9fa;
+}
+
+.insurance-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.insurance-image-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.insurance-image-area img {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    object-fit: cover;
+    clip-path: circle(50% at 50% 50%);
+}
+
+.insurance-content {
+    flex: 1;
+    max-width: 50%;
+    color: var(--primary-blue);
+}
+
+.insurance-content h2 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.insurance-content h2 strong {
+    font-weight: 700;
+}
+
+.insurance-content p {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+.insurance-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+}
+
+@media (max-width: 950px) {
+    .insurance-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    .insurance-content {
+        max-width: 100%;
+    }
+    .insurance-image-area img {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 640px) {
+    .insurance-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ======================================= */
+/* ========= ESTILOS MENU DROPDOWN ========= */
+/* ======================================= */
+
+.nav-item-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0.75rem;
+    
+    background-color: rgba(29, 37, 83, 0.9);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    border-radius: 12px;
+    padding: 0.5rem;
+    list-style: none;
+    min-width: 200px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 1000;
+}
+
+.nav-item-dropdown:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: var(--text-gray);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--white);
+}
+
+/* ============================================== */
+/* ========= ESTILOS PÁGINA QUEM SOMOS ========= */
+/* ============================================== */
+
+.quemsomos-hero-section {
+    background-color: #0d218a;
+    color: #fff;
+    padding-bottom: 10rem;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+
+.quemsomos-hero-section .main-header {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.nav-links a.active {
+    font-weight: 700;
+    color: #fff;
+}
+
+.quemsomos-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    padding-top: 4rem;
+}
+
+.quemsomos-content {
+    flex: 1;
+    max-width: 50%;
+}
+
+.quemsomos-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+}
+
+.quemsomos-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.quemsomos-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.quemsomos-image-wrapper img {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@media (max-width: 950px) {
+    .quemsomos-hero-section {
+        padding-bottom: 6rem;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+    }
+
+    .quemsomos-wrapper {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 2rem;
+    }
+
+    .quemsomos-content {
+        max-width: 100%;
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .quemsomos-image-wrapper {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+
+    .quemsomos-image-wrapper img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .quemsomos-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* =============================================== */
+/* ========= ESTILOS SEÇÃO ECOSSISTEMA ========= */
+/* =============================================== */
+
+.ecosystem-section {
+    padding: 8rem 0;
+    background-color: #f8f9fa;
+    position: relative;
+    margin-top: -150px;
+    padding-top: 250px;
+    text-align: center;
+}
+
+.ecosystem-image-wrapper {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.ecosystem-image-wrapper img {
+    width: 100%;
+    height: auto;
+    clip-path: ellipse(80% 50% at 50% 0%);
+}
+
+.ecosystem-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.ecosystem-content .pill {
+    background-color: #e5e7eb;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+}
+
+.ecosystem-content h2 {
+    color: var(--primary-blue);
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+@media (max-width: 950px) {
+    .ecosystem-section {
+        margin-top: -100px;
+        padding-top: 200px;
+    }
+    .ecosystem-image-wrapper {
+        width: 400px;
+        height: 200px;
+        top: -80px;
+    }
+    .ecosystem-content h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .ecosystem-section {
+        margin-top: -80px;
+        padding-top: 150px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+     .ecosystem-image-wrapper {
+        width: 300px;
+        height: 150px;
+        top: -60px;
+    }
+}
+
+/* =================================================== */
+/* ========= ESTILOS CARROSSEL BENEFÍCIOS DETALHADOS ========= */
+/* =================================================== */
+
+.detailed-benefits-section {
+    padding: 6rem 0;
+    background-color: #f8f9fa;
+}
+
+.detailed-benefits-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    color: var(--primary-blue);
+}
+.detailed-benefits-header .header-text { max-width: 60%; }
+.detailed-benefits-header h2 { font-size: 2rem; font-weight: 700; margin: 0.75rem 0; }
+.detailed-benefits-header p { color: #4b5563; line-height: 1.6; }
+
+.detailed-benefits-carousel {
+    position: relative;
+}
+
+.detailed-benefits-carousel .carousel-track-container {
+    overflow: hidden;
+}
+
+.detailed-benefits-carousel .carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    align-items: stretch; 
+    transition: transform 0.5s ease-in-out;
+}
+
+.detailed-benefits-carousel .carousel-slide {
+    flex: 0 0 calc((100% - 3rem) / 3);
+    min-width: 300px;
+}
+
+.detailed-benefits-carousel .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    color: var(--primary-blue);
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    padding: 0;
+    background: none;
+    border: none;
+}
+.detailed-benefits-carousel .carousel-arrow:hover {
+    opacity: 1;
+}
+
+.detailed-benefits-carousel .prev-arrow {
+    left: -3rem;
+}
+.detailed-benefits-carousel .next-arrow {
+    right: -3rem;
+}
+
+.detailed-benefit-card {
+    background-color: #0d218a;
+    color: #fff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    height: 100%;
+}
+.detailed-benefit-card .card-header { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; opacity: 0.8; margin-bottom: 1.5rem; }
+.detailed-benefit-card h3 { font-size: 1.5rem; line-height: 1.3; margin-bottom: 1.5rem; }
+.detailed-benefit-card .coverage-label { font-size: 0.9rem; opacity: 0.8; margin-bottom: 0.75rem; }
+.detailed-benefit-card ul { list-style: none; padding-left: 1.25rem; }
+.detailed-benefit-card ul li { position: relative; padding-bottom: 0.75rem; font-size: 0.9rem; line-height: 1.5; opacity: 0.9; }
+.detailed-benefit-card ul li::before { content: '•'; position: absolute; left: -1.25rem; color: var(--green-accent); }
+
+@media (max-width: 1200px) {
+    .detailed-benefits-carousel .carousel-slide {
+        flex-basis: calc((100% - 1.5rem) / 2);
+    }
+}
+
+@media (max-width: 768px) {
+    .detailed-benefits-header { flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; }
+    .detailed-benefits-header .header-text { max-width: 100%; }
+    .detailed-benefits-carousel .carousel-slide { flex-basis: 90%; }
+
+    .detailed-benefits-carousel .prev-arrow {
+        left: -1rem;
+    }
+    .detailed-benefits-carousel .next-arrow {
+        right: -1rem;
+    }
+}
+
+/* =================================================== */
+/* ========= ESTILOS DO NOVO GRID DE SERVIÇOS (INDEX) ========= */
+/* =================================================== */
+
+.service-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Estilo do card principal */
+.services-grid .service-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Espaço entre o ícone e o texto */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.services-grid .service-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+/* Estilo do ícone */
+.services-grid .icon-bg svg {
+    width: 24px;
+    height: 24px;
+    color: #fff;
+}
+
+/* Estilo do texto dentro do card */
+.services-grid .service-card span {
+    color: #c471ed; /* Cor roxa/magenta do texto */
+    font-weight: 500;
+    text-decoration: none; /* Garante que não haja sublinhado */
+}
+/* ======================================= */
+/* ========= ESTILOS DO MODAL DE LOGIN ========= */
+/* ======================================= */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(13, 33, 138, 0.6); /* Cor azul escura com opacidade */
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Garante que fique sobre todo o conteúdo */
+    
+    /* Escondido por padrão */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Classe que o JavaScript irá adicionar para mostrar o modal */
+.modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: #fff;
+    color: var(--primary-blue);
+    padding: 2.5rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    
+    /* Animação de aparição */
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.visible .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #9ca3af;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.75rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.forgot-password-link {
+    display: block;
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--accent-blue);
+    text-decoration: none;
+    margin-bottom: 2rem;
+}
+
+.modal-content .btn {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+}
+/* ======================================= */
+/* ========= ESTILOS PÁGINA ASSINE ========= */
+/* ======================================= */
+
+body.page-assine {
+    background-color: var(--primary-blue);
+    color: #fff;
+}
+
+.assine-main-content {
+    padding: 6rem 0;
+}
+
+.assine-content-wrapper {
+    max-width: 700px;
+}
+
+.subscription-section,
+.existing-user-login {
+    margin-bottom: 2rem;
+}
+
+.assine-content-wrapper h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.assine-content-wrapper h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.assine-content-wrapper .price-section {
+    margin: 1rem 0 2rem 0;
+}
+
+/* Novo estilo de botão com gradiente roxo */
+.btn-gradient-purple {
+    background-image: linear-gradient(to right, #8b5cf6, #6366f1);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 2.5rem;
+}
+.btn-gradient-purple:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.assine-content-wrapper .activation-note {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 1.5rem;
+    max-width: 280px;
+}
+
+/* Divisor horizontal */
+.section-divider {
+    border: none;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 3rem 0;
+}
+
+/* Seção de cadastro (newsletter) */
+.newsletter-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+.newsletter-cta h3 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+.newsletter-cta p { opacity: 0.8; }
+.newsletter-cta .btn-light-blue { flex-shrink: 0; }
+
+/* Rodapé simplificado (sem a curva e a sobreposição) */
+.simple-footer {
+    clip-path: none;
+    margin-top: 0;
+    padding-top: 0;
+}
+.simple-footer .footer-cta-section {
+    display: none; /* Esconde a seção de cadastro duplicada do rodapé */
+}
+.simple-footer .footer-main {
+    padding-top: 3rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .assine-content-wrapper h1 { font-size: 1.75rem; }
+    .assine-content-wrapper h2 { font-size: 1.5rem; }
+    .newsletter-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+}

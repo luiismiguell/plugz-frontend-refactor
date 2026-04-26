@@ -30,10 +30,6 @@ Essa reestruturação contribuiu como base para o desenvolvimento da versão atu
 
 Aprimorar a estrutura e usabilidade do sistema, contribuindo para a evolução da interface da plataforma Plugz e aplicando conhecimentos de desenvolvimento front-end em contexto real.
 
-## 📷 Preview
-
-(Adicione aqui prints ou GIF do sistema)
-
 ## ⚠️ Observação
 
 Este projeto foi desenvolvido com base em um sistema interno da empresa. Algumas partes foram adaptadas ou omitidas para fins de portfólio.
